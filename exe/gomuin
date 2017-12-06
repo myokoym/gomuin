@@ -2,7 +2,7 @@
 
 path = ARGV[0]
 
-unless path
+if path.nil? || !File.exist?(path)
   $stderr.puts "Usage: #{File.basename(__FILE__)} PATH"
   $stderr.puts "For example: #{File.basename(__FILE__)} foo.txt"
   $stderr.puts 'To be executed: cp -p foo.txt foo.#{Time.now.strftime("%Y%m%d%H%M%S")}.txt'
