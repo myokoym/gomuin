@@ -21,4 +21,4 @@ options = {
   preserve: true,
   verbose: true,
 }
-FileUtils.cp(path, new_path, options)
+FileUtils.cp_r(path, new_path, options)
