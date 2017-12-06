@@ -1,0 +1,22 @@
+#!/usr/bin/env ruby
+
+path = ARGV[0]
+
+unless path
+  $stderr.puts "Usage: #{File.basename(__FILE__)} PATH"
+  exit 1
+end
+
+require "fileutils"
+
+format = "%Y%m%d%H%M%S"
+timestamp = Time.now.strftime(format)
+
+new_name = "#{File.basename(path, ".*")}.#{timestamp}#{File.extname(path)}"
+new_path = File.join(File.dirname(path), new_name)
+
+options = {
+  preserve: true,
+  verbose: true,
+}
+FileUtils.cp(path, new_path, options)
